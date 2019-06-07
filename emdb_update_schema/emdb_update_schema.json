@@ -1,7 +1,7 @@
 {
     "$comment": "At the time draft 7 of JSON schema was the latest version and the explict reference to this version is chosen",
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "$id_to_change": "https://github.com/emdb-empiar/emdb-json-schemas/emdb_update_schema.json",
+    "$id": "https://github.com/emdb-empiar/emdb-json-schemas/emdb_update_schema.json",
     "title": "JSON Schema for the weekly update of the EMDB archive",
     "description": "This schema contains next week's released, updated and obsoleted entries",
     "definitions": {
