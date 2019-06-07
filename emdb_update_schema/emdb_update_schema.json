@@ -1,0 +1,61 @@
+{
+    "$comment": "At the time draft 7 of JSON schema was the latest version and the explict reference to this version is chosen",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id_to_change": "https://github.com/emdb-empiar/emdb-json-schemas/emdb_update_schema.json",
+    "title": "JSON Schema for the weekly update of the EMDB archive",
+    "description": "This schema contains next week's released, updated and obsoleted entries",
+    "definitions": {
+        "updateData": {
+            "$id": "#updateData",
+            "properties": {
+                "total": {"type": "number"},
+                "entries": {
+                    "type": "array",
+                    "items": {
+                        "type": "string", 
+                        "pattern": "^EMD-[0-9]{4,5}$"
+                        }
+                    }
+            },
+            "required": [
+                "total",
+                "entries"
+            ]
+        }
+    },
+    "type": "object",
+    "properties": {
+        "updateDate": {
+            "type": "string",
+            "format": "date"
+        },
+        "releaseDate": {
+            "type": "string",
+            "format": "date"
+        },
+        
+        "totalNumberOfReleases": {"type": "number"},
+        "mapReleases": {"$ref": "#updateData"},
+        "headerHPUBReleases": {"$ref": "#updateData"},
+        "headerHOLDReleases": {"$ref": "#updateData"},
+        
+        "totalNumberOfUpdates": {"type": "number"},
+        "mapUpdates": {"$ref": "#updateData"},
+        "headerHPUBUpdates": {"$ref": "#updateData"},
+        "headerHOLDUpdates": {"$ref": "#updateData"},
+        
+        "obsoletedEntries": {"$ref": "#updateData"}
+    },
+   "additionalProperties": false,
+   "required": ["updateDate",
+                "releaseDate",
+                "totalNumberOfReleases",
+                 "mapReleases",
+                 "headerHPUBReleases",
+                 "headerHOLDReleases",
+                 "totalNumberOfUpdates",
+                 "mapUpdates",
+                 "headerHPUBUpdates",
+                 "headerHOLDUpdates",
+                 "obsoletedEntries"]
+}
