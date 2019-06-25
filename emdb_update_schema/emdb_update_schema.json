@@ -6,7 +6,6 @@
     "description": "This schema contains next week's released, updated and obsoleted entries",
     "definitions": {
         "updateData": {
-            "$id": "#updateData",
             "properties": {
                 "total": {"type": "number"},
                 "entries": {
@@ -35,16 +34,16 @@
         },
         
         "totalNumberOfReleases": {"type": "number"},
-        "mapReleases": {"$ref": "#updateData"},
-        "headerHPUBReleases": {"$ref": "#updateData"},
-        "headerHOLDReleases": {"$ref": "#updateData"},
+        "mapReleases": {"$ref": "#/definitions/updateData"},
+        "headerHPUBReleases": {"$ref": "#/definitions/updateData"},
+        "headerHOLDReleases": {"$ref": "#/definitions/updateData"},
         
         "totalNumberOfUpdates": {"type": "number"},
-        "mapUpdates": {"$ref": "#updateData"},
-        "headerHPUBUpdates": {"$ref": "#updateData"},
-        "headerHOLDUpdates": {"$ref": "#updateData"},
+        "mapUpdates": {"$ref": "#/definitions/updateData"},
+        "headerHPUBUpdates": {"$ref": "#/definitions/updateData"},
+        "headerHOLDUpdates": {"$ref": "#/definitions/updateData"},
         
-        "obsoletedEntries": {"$ref": "#updateData"}
+        "obsoletedEntries": {"$ref": "#/definitions/updateData"}
     },
    "additionalProperties": false,
    "required": ["updateDate",
