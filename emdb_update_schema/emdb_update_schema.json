@@ -43,7 +43,11 @@
         "headerHPUBUpdates": {"$ref": "#/definitions/updateData"},
         "headerHOLDUpdates": {"$ref": "#/definitions/updateData"},
         
-        "obsoletedEntries": {"$ref": "#/definitions/updateData"}
+        "obsoletedEntries": {"$ref": "#/definitions/updateData"},
+
+        "numOfEntriesWithoutReports" : {"type": "number"},
+        "currentValidationReports" : {"$ref": "#/definitions/updateData"},
+        "missingValidationReports" : {"$ref": "#/definitions/updateData"}
     },
    "additionalProperties": false,
    "required": ["updateDate",
