@@ -44,6 +44,7 @@
         "headerHOLDUpdates": {"$ref": "#/definitions/updateData"},
         
         "obsoletedEntries": {"$ref": "#/definitions/updateData"},
+        "withdrawnEntries": {"$ref": "#/definitions/updateData"},
 
         "numOfEntriesWithoutReports" : {"type": "number"},
         "currentValidationReports" : {"$ref": "#/definitions/updateData"},
