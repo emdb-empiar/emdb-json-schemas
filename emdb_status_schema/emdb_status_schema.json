@@ -1,0 +1,43 @@
+{
+    "$comment": "At the time draft 7 of JSON schema was the latest version and the explict reference to this version is chosen",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://github.com/emdb-empiar/emdb-json-schemas/emdb_status_schema.json",
+    "title": "JSON Schema for the weekly provision of status of every entry from the EMDB archive",
+    "description": "This schema contains the current status of every EMDB entry",
+    "definitions": {
+        "statusData": {
+            "properties": {
+                "DepID": {
+                    "type": "string", 
+                    "pattern": "^D_[0-9]+$"
+                },
+                "status": {"enum": ["AUCO", "AUTH", "AUXS", "AUXU", "HOLD", "HOLD8W", "HPUB", "OBS", "POLC", "PROC", "REFI", "REL", "REPL", "REUP", "WAIT", "WDRN"]},
+                "title": { "type": "string" },
+                "authors": {
+                    "type": "array",
+                    "items": { "type": "string" }
+                },
+                "last_update": { "type": "string", "format": "date"},
+                "map_release": { "type": "string", "format": "date" },
+                "obsoleted_date": { "type": "string", "format": "date" },
+                "withdrawn_date": { "type": "string", "format": "date" },
+                "superseded_by": {
+                    "type": "string", 
+                    "pattern": "^EMD-[0-9]{4,5}$"
+                }
+            },
+            "required": [
+                "DepID",
+                "status",
+                "title",
+                "authors",
+                "last_update"
+            ]
+        }
+    },
+    "type": "object",
+    "patternProperties": {
+        "^EMD-[0-9]{4,5}$": { "$ref": "#/definitions/statusData" }
+    },
+   "additionalProperties": false
+}
