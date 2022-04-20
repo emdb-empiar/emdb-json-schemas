@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "$id": "https://github.com/emdb-empiar/emdb-json-schemas/blob/master/emdb_exchange_schema/emdb_exchange_schema.json",
+  "title": "EMDB exchange json schema",
+  "description": "This schema contains information about files and data provided in the EMDB exchange",
+  "required": ["date", "PDBe", "PDBj", "RCSB"],
+  "properties": {
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "PDBe": {"$ref": "#/definitions/PDBe_type"},
+    "PDBj": {"$ref": "#/definitions/PDBj_type"},
+    "RCSB": {"$ref": "#/definitions/RCSB_type"}
+  },
+  "definitions": {
+    "PDBe_type": {
+      "type": "array",
+      "items": {"$ref": "#/definitions/entry_type"}
+    },
+    "PDBj_type": {
+      "type": "array",
+      "items": {"$ref": "#/definitions/entry_type"}
+    },
+    "RCSB_type": {
+      "type": "array",
+      "items": {"$ref": "#/definitions/entry_type"}
+    },
+    "entry_type": {
+      "type": "object",
+      "patternProperties": {"^EMD-[0-9]{4,5}$": {"$ref": "#/definitions/entry_info"}},
+      "additionalProperties": false
+    },
+    "entry_info": {
+      "type": "object",
+      "properties": {
+        "Dep_ID": {
+          "type": "string",
+          "pattern": "^D_[0-9]+$"
+        },
+        "header": {"$ref": "#/definitions/files_type"},
+        "map": {"$ref": "#/definitions/files_type"},
+        "masks": {"$ref": "#/definitions/files_type"},
+        "fscs": {"$ref": "#/definitions/files_type"},
+        "images": {"$ref": "#/definitions/files_type"},
+        "half maps": {"$ref": "#/definitions/files_type"},
+        "additional maps": {"$ref": "#/definitions/files_type"},
+        "curr_val_reports": {"$ref": "#/definitions/files_type"},
+        "checks": {"$ref": "#/definitions/checks_type"}
+      },
+      "required": []
+    },
+    "files_type": {
+      "type": "array",
+      "minItems": 0,
+      "items": {"type": "string"}
+    },
+    "checks_type": {
+      "type": "object",
+      "properties": {
+        "blockers": {"$ref": "#/definitions/blockers_type"},
+        "warnings": {"$ref": "#/definitions/warnings_type"}
+      }
+    },
+    "blockers_type": {
+      "type": "object",
+      "properties": {
+        "entry_dir_exists": {"type": "boolean"},
+        "header_dir_exists": {"type": "boolean"},
+        "header_file_exists": {"type": "boolean"},
+        "one_header": {"type": "boolean"},
+        "header_has_data": {"type": "boolean"},
+        "correct_num__of_half_maps": {"type": "boolean"},
+        "correct_num_of_primary_maps": {"type": "boolean"},
+        "all_files_have_data": {"type": "boolean"},
+        "files_without_data": {"$ref": "#/definitions/files_type"},
+        "image_content_correct": {"type": "boolean"},
+        "id_in_header_matches": {"type": "boolean"},
+        "header_file_validates": {"type": "boolean"},
+        "reports_validate": {"type": "boolean"},
+        "map_file_validates": {"type": "boolean"},
+        "miss_val_rep_entry_in_prep": {"type": "boolean"},
+        "curr_val_rep_entry_in_exchange": {"type": "boolean"},
+        "all_files_ref_in_header": {"type": "boolean"},
+        "files_exch_not_ref_in_header": {"$ref": "#/definitions/files_type"},
+        "files_not_exch_ref_in_header": {"$ref": "#/definitions/files_type"},
+        "map_dir_exists": {"type": "boolean"},
+        "map_file_exists": {"type": "boolean"},
+        "image_dir_exists": {"type": "boolean"},
+        "image_file_exists": {"type": "boolean"},
+        "release_date_correct": {"type": "boolean"},
+        "update_date_correct": {"type": "boolean"},
+        "update_entry_released": {"type": "boolean"},
+        "obsolete_date_correct": {"type": "boolean"}
+      }
+    },
+    "warnings_type": {
+      "type": "object",
+      "properties": {
+        "summary_exists": {"type": "boolean"},
+        "no_stray_files": {"type": "boolean"},
+        "correct_num_of_images": {"type": "boolean"},
+        "image_ext_correct": {"type": "boolean"},
+        "all_dirs_not_empty": {"type": "boolean"},
+        "empty_dirs": {"$ref": "#/definitions/files_type"},
+        "file_names_correct": {"type": "boolean"},
+        "file_names_incorrect": {"$ref": "#/definitions/files_type"},
+        "val_dir_exists": {"type": "boolean"},
+        "correct_number_of_reports": {"$ref": "#/definitions/val_reps_numbers_type"},
+        "map_only_val_reps_exist": {"type": "boolean"},
+        "map_only_val_reps_missing": {"$ref": "#/definitions/files_type"},
+        "map_statistics_correct": {"$ref": "#/definitions/map_stats_type"}
+      }
+    },
+    "val_reps_numbers_type": {
+      "type": "object",
+      "properties": {
+        "correct_num": {"type": "number"},
+        "num_of_val_reps": {"type": "number"}
+      }
+    },
+    "map_stats_type": {
+      "type": "object",
+      "properties": {
+        "min_correct": {"type": "boolean"},
+        "max_correct": {"type": "boolean"},
+        "std_correct": {"type": "boolean"}
+      }
+    }
+  }
+}
