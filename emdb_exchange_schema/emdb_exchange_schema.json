@@ -30,7 +30,11 @@
         "miss_val_reports": {"$ref": "#/definitions/files_type"},
         "checks": {"$ref": "#/definitions/checks_type"}
       },
-      "required": []
+      "required": ["site", "status", "Dep_ID", "last_update", "map_release", 
+                    "header_release_date", "obsoleted_date", "withdrawn_date",
+                    "update", "header", "map", "masks", "fscs", "images", 
+                    "half maps", "additional maps", "curr_val_reports", 
+                    "miss_val_reports", "checks"]
     },
     "files_type": {
       "type": "array",
@@ -40,14 +44,16 @@
           "file_name": {"type": "string"},
           "to_copy": {"type": "boolean"},
           "copied_to": {"type": "string"}
-      }
+      },
+      "requred": ["file_path", "file_name", "to_copy", "copied_to"]
     },
     "checks_type": {
       "type": "object",
       "properties": {
         "blockers": {"$ref": "#/definitions/blockers_type"},
         "warnings": {"$ref": "#/definitions/warnings_type"}
-      }
+      },
+      "required": ["blockers", "warnings"]
     },
     "check_results_type": {
       "type": "array",
@@ -81,7 +87,15 @@
         "update_date_correct": {"$ref": "#/definitions/check_results_type"},
         "update_entry_released": {"$ref": "#/definitions/check_results_type"},
         "obsolete_date_correct": {"$ref": "#/definitions/check_results_type"}
-      }
+      },
+      "required": ["entry_dir_exists", "header_dir_exists", "header_file_exists", "one_header",
+                   "header_has_data", "correct_num__of_half_maps", "correct_num_of_primary_maps",
+                   "all_files_have_data", "files_without_data", "image_content_correct", 
+                   "id_in_header_matches", "header_file_validates", "reports_validate", 
+                   "map_file_validates", "miss_val_rep_entry_in_prep", "curr_val_rep_entry_in_exchange",
+                    "all_files_ref_in_header", "map_dir_exists", "map_file_exists", "image_dir_exists",
+                    "image_file_exists", "release_date_correct", "update_date_correct", 
+                    "update_entry_released", "obsolete_date_correct"]
     },
     "warnings_type": {
       "type": "object",
@@ -99,6 +113,12 @@
         "map_only_val_reps_exist": {"$ref": "#/definitions/check_results_type"},
         "map_statistics_correct": {"$ref": "#/definitions/check_results_type"}
       }
+      ,
+      "required": ["summary_exists", "no_stray_files", "correct_num_of_images",
+                    "image_ext_correct", "all_dirs_not_empty", "empty_dirs",
+                    "file_names_correct", "file_names_incorrect", "val_dir_exists",
+                    "correct_number_of_reports", "map_only_val_reps_exist", 
+                    "map_statistics_correct"]
     }
   }
 }
