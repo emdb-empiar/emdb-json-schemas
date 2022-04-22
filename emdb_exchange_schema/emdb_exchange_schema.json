@@ -12,12 +12,12 @@
       "properties": {
         "site": { "enum": ["PDBe", "RCSB", "PDBj"]},
         "status": {"enum": ["AUCO", "AUTH", "AUXS", "AUXU", "HOLD", "HOLD8W", "HPUB", "OBS", "POLC", "PROC", "REFI", "REL", "REPL", "REUP", "WAIT", "WDRN"]},
-        "Dep_ID": {"type": "string", "pattern": "^D_[0-9]+$"},
-        "last_update": { "type": "string", "format": "date"},
-        "map_release": { "type": "string", "format": "date" },
-        "header_release_date": { "type": "string", "format": "date"},
-        "obsoleted_date": { "type": "string", "format": "date" },
-        "withdrawn_date": { "type": "string", "format": "date" },
+        "Dep ID": {"type": "string", "pattern": "^D_[0-9]+$"},
+        "last update": { "type": "string", "format": "date"},
+        "map release": { "type": "string", "format": "date" },
+        "header release date": { "type": "string", "format": "date"},
+        "obsoleted date": { "type": "string", "format": "date" },
+        "withdrawn date": { "type": "string", "format": "date" },
         "update": {"type": "boolean"},
         "header": {"$ref": "#/definitions/files_type"},
         "map": {"$ref": "#/definitions/files_type"},
@@ -26,8 +26,8 @@
         "images": {"$ref": "#/definitions/files_type"},
         "half maps": {"$ref": "#/definitions/files_type"},
         "additional maps": {"$ref": "#/definitions/files_type"},
-        "curr_val_reports": {"$ref": "#/definitions/files_type"},
-        "miss_val_reports": {"$ref": "#/definitions/files_type"},
+        "current reports": {"$ref": "#/definitions/files_type"},
+        "missing reports": {"$ref": "#/definitions/files_type"},
         "checks": {"$ref": "#/definitions/checks_type"}
       },
       "required": ["site", "status", "Dep_ID", "last_update", "map_release", 
@@ -40,10 +40,10 @@
       "type": "array",
       "items": {"type": "object"},
       "properties": {
-          "file_path": {"type": "string"},
-          "file_name": {"type": "string"},
-          "to_copy": {"type": "boolean"},
-          "copied_to": {"type": "string"}
+          "file path": {"type": "string"},
+          "file name": {"type": "string"},
+          "to copy": {"type": "boolean"},
+          "copied to": {"type": "string"}
       },
       "requred": ["file_path", "file_name", "to_copy", "copied_to"]
     },
