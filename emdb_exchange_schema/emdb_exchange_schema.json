@@ -70,7 +70,6 @@
         "correct_num__of_half_maps": {"$ref": "#/definitions/check_results_type"},
         "correct_num_of_primary_maps": {"$ref": "#/definitions/check_results_type"},
         "all_files_have_data": {"$ref": "#/definitions/check_results_type"},
-        "files_without_data": {"$ref": "#/definitions/check_results_type"},
         "image_content_correct": {"$ref": "#/definitions/check_results_type"},
         "id_in_header_matches": {"$ref": "#/definitions/check_results_type"},
         "header_file_validates": {"$ref": "#/definitions/check_results_type"},
