@@ -88,7 +88,7 @@
         "obsolete_date_correct": {"$ref": "#/definitions/check_results_type"}
       },
       "required": ["entry_dir_exists", "header_dir_exists", "header_file_exists", "one_header",
-                   "header_has_data", "correct_num__of_half_maps", "correct_num_of_primary_maps",
+                   "header_has_data", "correct_num_of_half_maps", "correct_num_of_primary_maps",
                    "all_files_have_data", "image_content_correct",
                    "id_in_header_matches", "header_file_validates", "reports_validate", 
                    "map_file_validates", "miss_val_rep_entry_in_prep", "curr_val_rep_entry_in_exchange",
