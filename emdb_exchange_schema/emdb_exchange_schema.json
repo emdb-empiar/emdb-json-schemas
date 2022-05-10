@@ -89,7 +89,7 @@
       },
       "required": ["entry_dir_exists", "header_dir_exists", "header_file_exists", "one_header",
                    "header_has_data", "correct_num__of_half_maps", "correct_num_of_primary_maps",
-                   "all_files_have_data", "files_without_data", "image_content_correct", 
+                   "all_files_have_data", "image_content_correct",
                    "id_in_header_matches", "header_file_validates", "reports_validate", 
                    "map_file_validates", "miss_val_rep_entry_in_prep", "curr_val_rep_entry_in_exchange",
                     "all_files_ref_in_header", "map_dir_exists", "map_file_exists", "image_dir_exists",
@@ -104,7 +104,6 @@
         "correct_num_of_images": {"$ref": "#/definitions/check_results_type"},
         "image_ext_correct": {"$ref": "#/definitions/check_results_type"},
         "all_dirs_not_empty": {"$ref": "#/definitions/check_results_type"},
-        "empty_dirs": {"$ref": "#/definitions/check_results_type"},
         "file_names_correct": {"$ref": "#/definitions/check_results_type"},
         "file_names_incorrect": {"$ref": "#/definitions/check_results_type"},
         "val_dir_exists": {"$ref": "#/definitions/check_results_type"},
@@ -114,7 +113,7 @@
       }
       ,
       "required": ["summary_exists", "no_stray_files", "correct_num_of_images",
-                    "image_ext_correct", "all_dirs_not_empty", "empty_dirs",
+                    "image_ext_correct", "all_dirs_not_empty",
                     "file_names_correct", "file_names_incorrect", "val_dir_exists",
                     "correct_number_of_reports", "map_only_val_reps_exist", 
                     "map_statistics_correct"]
