@@ -67,7 +67,7 @@
         "header_file_exists": {"$ref": "#/definitions/check_results_type"},
         "one_header": {"$ref": "#/definitions/check_results_type"},
         "header_has_data": {"$ref": "#/definitions/check_results_type"},
-        "correct_num__of_half_maps": {"$ref": "#/definitions/check_results_type"},
+        "correct_num_of_half_maps": {"$ref": "#/definitions/check_results_type"},
         "correct_num_of_primary_maps": {"$ref": "#/definitions/check_results_type"},
         "all_files_have_data": {"$ref": "#/definitions/check_results_type"},
         "image_content_correct": {"$ref": "#/definitions/check_results_type"},
