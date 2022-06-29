@@ -109,14 +109,16 @@
         "val_dir_exists": {"$ref": "#/definitions/check_results_type"},
         "correct_number_of_reports": {"$ref": "#/definitions/check_results_type"},
         "map_only_val_reps_exist": {"$ref": "#/definitions/check_results_type"},
-        "map_statistics_correct": {"$ref": "#/definitions/check_results_type"}
+        "map_statistics_correct": {"$ref": "#/definitions/check_results_type"},
+        "fscs_content_correct": {"$ref": "#/definitions/check_results_type"},
+        "associate_entries_from_same_site": {"$ref": "#/definitions/check_results_type"}
       }
       ,
       "required": ["summary_exists", "no_stray_files", "correct_num_of_images",
                     "image_ext_correct", "all_dirs_not_empty",
                     "file_names_correct", "file_names_incorrect", "val_dir_exists",
                     "correct_number_of_reports", "map_only_val_reps_exist", 
-                    "map_statistics_correct"]
+                    "map_statistics_correct", "fscs_content_correct", "associate_entries_from_same_site"]
     }
   }
 }
