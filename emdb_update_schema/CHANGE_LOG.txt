@@ -1,0 +1,1 @@
+1.1: Removed header and hold releases and updates, removed total for releases and updates, renamed keys to upper camel case, change required to all

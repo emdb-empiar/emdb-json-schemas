@@ -4,6 +4,7 @@
     "$id": "https://github.com/emdb-empiar/emdb-json-schemas/emdb_update_schema.json",
     "title": "JSON Schema for the weekly update of the EMDB archive",
     "description": "This schema contains next week's released, updated and obsoleted entries",
+    "version": "1.1",
     "definitions": {
         "updateData": {
             "properties": {
@@ -24,42 +25,31 @@
     },
     "type": "object",
     "properties": {
-        "updateDate": {
+        "UpdateDate": {
             "type": "string",
             "format": "date"
         },
-        "releaseDate": {
+        "ReleaseDate": {
             "type": "string",
             "format": "date"
         },
         
-        "totalNumberOfReleases": {"type": "number"},
-        "mapReleases": {"$ref": "#/definitions/updateData"},
-        "headerHPUBReleases": {"$ref": "#/definitions/updateData"},
-        "headerHOLDReleases": {"$ref": "#/definitions/updateData"},
-        
-        "totalNumberOfUpdates": {"type": "number"},
-        "mapUpdates": {"$ref": "#/definitions/updateData"},
-        "headerHPUBUpdates": {"$ref": "#/definitions/updateData"},
-        "headerHOLDUpdates": {"$ref": "#/definitions/updateData"},
-        
-        "obsoletedEntries": {"$ref": "#/definitions/updateData"},
-        "withdrawnEntries": {"$ref": "#/definitions/updateData"},
-
-        "numOfEntriesWithoutReports" : {"type": "number"},
-        "currentValidationReports" : {"$ref": "#/definitions/updateData"},
-        "missingValidationReports" : {"$ref": "#/definitions/updateData"}
+        "Releases": {"$ref": "#/definitions/updateData"},
+        "Updates": {"$ref": "#/definitions/updateData"},
+        "Obsoleted": {"$ref": "#/definitions/updateData"},
+        "Withdrawn": {"$ref": "#/definitions/updateData"},
+        "NumberOfEntriesWithoutReports" : {"type": "number"},
+        "CurrentReleasesValidationReports" : {"$ref": "#/definitions/updateData"},
+        "PreviousReleasesValidationReports" : {"$ref": "#/definitions/updateData"}
     },
    "additionalProperties": false,
-   "required": ["updateDate",
-                "releaseDate",
-                "totalNumberOfReleases",
-                 "mapReleases",
-                 "headerHPUBReleases",
-                 "headerHOLDReleases",
-                 "totalNumberOfUpdates",
-                 "mapUpdates",
-                 "headerHPUBUpdates",
-                 "headerHOLDUpdates",
-                 "obsoletedEntries"]
+   "required": ["UpdateDate",
+                "ReleaseDate",
+                "Releases",
+                "Updates",
+                "Obsoleted",
+                "Withdrawn",
+                "NumberOfEntriesWithoutReports",
+                "CurrentReleasesValidationReports",
+                "PreviousReleasesValidationReports"]
 }
