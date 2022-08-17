@@ -7,15 +7,26 @@
     "definitions": {
         "statusData": {
             "properties": {
-                "DepID": {
-                    "type": "string", 
-                    "pattern": "^D_[0-9]+$"
-                },
                 "status": {"enum": ["AUCO", "AUTH", "AUXS", "AUXU", "HOLD", "HOLD8W", "HPUB", "OBS", "POLC", "PROC", "REFI", "REL", "REPL", "REUP", "WAIT", "WDRN"]},
                 "title": { "type": "string" },
                 "authors": {
                     "type": "array",
-                    "items": { "type": "string" }
+                    "items": {"type": "object"},
+                    "properties": {
+                        "name": {"type": "string"},
+                        "orcid": {
+                            "anyOf": [
+                                {
+                                    "type": "string",
+                                    "pattern": "[0-9]{4}-[0-9]{4}-[0-9]{4}-([0-9]{3}X|[0-9]{4})"
+                                },
+                                {
+                                    "type": "string",
+                                    "maxLength": 0
+                                }
+                            ]
+                        }
+                    }
                 },
                 "last_update": { "type": "string", "format": "date"},
                 "map_release": { "type": "string", "format": "date" },
@@ -27,7 +38,6 @@
                 }
             },
             "required": [
-                "DepID",
                 "status",
                 "title",
                 "authors",

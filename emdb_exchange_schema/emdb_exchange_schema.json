@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "$id": "https://github.com/emdb-empiar/emdb-json-schemas/blob/master/emdb_exchange_schema/emdb_exchange_schema.json",
+  "title": "EMDB exchange json schema",
+  "description": "This schema contains information about files and data provided in the EMDB exchange",
+  "patternProperties": {"^EMD-[0-9]{4,}$": {"$ref": "#/definitions/entry_info"}},
+  "additionalProperties": false,
+  "definitions": {
+    "entry_info": {
+      "type": "object",
+      "properties": {
+        "site": { "enum": ["PDBe", "RCSB", "PDBj"]},
+        "status": {"enum": ["AUCO", "AUTH", "AUXS", "AUXU", "HOLD", "HOLD8W", "HPUB", "OBS", "POLC", "PROC", "REFI", "REL", "REPL", "REUP", "WAIT", "WDRN"]},
+        "Dep_ID": {"type": "string", "pattern": "^D_[0-9]+$"},
+        "last_update_date": { "type": "string", "format": "date"},
+        "map_release_date": { "type": "string", "format": "date" },
+        "header_release_date": { "type": "string", "format": "date"},
+        "obsoleted_date": { "type": "string", "format": "date" },
+        "withdrawn_date": { "type": "string", "format": "date" },
+        "update": {"type": "boolean"},
+        "header": {"$ref": "#/definitions/files_type"},
+        "map": {"$ref": "#/definitions/files_type"},
+        "masks": {"$ref": "#/definitions/files_type"},
+        "fscs": {"$ref": "#/definitions/files_type"},
+        "images": {"$ref": "#/definitions/files_type"},
+        "half_maps": {"$ref": "#/definitions/files_type"},
+        "additional_maps": {"$ref": "#/definitions/files_type"},
+        "current_reports": {"$ref": "#/definitions/files_type"},
+        "missing_reports": {"$ref": "#/definitions/files_type"},
+        "checks": {"$ref": "#/definitions/checks_type"}
+      },
+      "required": ["site", "status", "Dep_ID", "last_update_date", "map_release_date",
+                    "header_release_date", "obsoleted_date", "withdrawn_date",
+                    "update", "header", "map", "masks", "fscs", "images", 
+                    "half_maps", "additional_maps", "current_reports",
+                    "missing_reports", "checks"]
+    },
+    "files_type": {
+      "type": "array",
+      "items": {"type": "object"},
+      "properties": {
+          "file_path": {"type": "string"},
+          "file_name": {"type": "string"},
+          "to_copy": {"type": "boolean"},
+          "copied_to": {"type": "string"}
+      },
+      "requred": ["file_path", "file_name", "to_copy", "copied_to"]
+    },
+    "checks_type": {
+      "type": "object",
+      "properties": {
+        "blockers": {"$ref": "#/definitions/blockers_type"},
+        "warnings": {"$ref": "#/definitions/warnings_type"}
+      },
+      "required": ["blockers", "warnings"]
+    },
+    "check_results_type": {
+      "type": "array",
+      "items": [{"type": "boolean"}, {"type": "string"}]
+    },
+    "blockers_type": {
+      "type": "object",
+      "properties": {
+        "entry_dir_exists": {"$ref": "#/definitions/check_results_type"},
+        "header_dir_exists": {"$ref": "#/definitions/check_results_type"},
+        "header_file_exists": {"$ref": "#/definitions/check_results_type"},
+        "one_header": {"$ref": "#/definitions/check_results_type"},
+        "header_has_data": {"$ref": "#/definitions/check_results_type"},
+        "correct_num__of_half_maps": {"$ref": "#/definitions/check_results_type"},
+        "correct_num_of_primary_maps": {"$ref": "#/definitions/check_results_type"},
+        "all_files_have_data": {"$ref": "#/definitions/check_results_type"},
+        "image_content_correct": {"$ref": "#/definitions/check_results_type"},
+        "id_in_header_matches": {"$ref": "#/definitions/check_results_type"},
+        "header_file_validates": {"$ref": "#/definitions/check_results_type"},
+        "reports_validate": {"$ref": "#/definitions/check_results_type"},
+        "map_file_validates": {"$ref": "#/definitions/check_results_type"},
+        "miss_val_rep_entry_in_prep": {"$ref": "#/definitions/check_results_type"},
+        "curr_val_rep_entry_in_exchange": {"$ref": "#/definitions/check_results_type"},
+        "all_files_ref_in_header": {"$ref": "#/definitions/check_results_type"},
+        "map_dir_exists": {"$ref": "#/definitions/check_results_type"},
+        "map_file_exists": {"$ref": "#/definitions/check_results_type"},
+        "image_dir_exists": {"$ref": "#/definitions/check_results_type"},
+        "image_file_exists": {"$ref": "#/definitions/check_results_type"},
+        "release_date_correct": {"$ref": "#/definitions/check_results_type"},
+        "update_date_correct": {"$ref": "#/definitions/check_results_type"},
+        "update_entry_released": {"$ref": "#/definitions/check_results_type"},
+        "obsolete_date_correct": {"$ref": "#/definitions/check_results_type"}
+      },
+      "required": ["entry_dir_exists", "header_dir_exists", "header_file_exists", "one_header",
+                   "header_has_data", "correct_num_of_half_maps", "correct_num_of_primary_maps",
+                   "all_files_have_data", "image_content_correct",
+                   "id_in_header_matches", "header_file_validates", "reports_validate", 
+                   "map_file_validates", "miss_val_rep_entry_in_prep", "curr_val_rep_entry_in_exchange",
+                    "all_files_ref_in_header", "map_dir_exists", "map_file_exists", "image_dir_exists",
+                    "image_file_exists", "release_date_correct", "update_date_correct", 
+                    "update_entry_released", "obsolete_date_correct"]
+    },
+    "warnings_type": {
+      "type": "object",
+      "properties": {
+        "summary_exists": {"$ref": "#/definitions/check_results_type"},
+        "no_stray_files": {"$ref": "#/definitions/check_results_type"},
+        "correct_num_of_images": {"$ref": "#/definitions/check_results_type"},
+        "image_ext_correct": {"$ref": "#/definitions/check_results_type"},
+        "all_dirs_not_empty": {"$ref": "#/definitions/check_results_type"},
+        "file_names_correct": {"$ref": "#/definitions/check_results_type"},
+        "file_names_incorrect": {"$ref": "#/definitions/check_results_type"},
+        "val_dir_exists": {"$ref": "#/definitions/check_results_type"},
+        "correct_number_of_reports": {"$ref": "#/definitions/check_results_type"},
+        "map_only_val_reps_exist": {"$ref": "#/definitions/check_results_type"},
+        "map_statistics_correct": {"$ref": "#/definitions/check_results_type"},
+        "fscs_content_correct": {"$ref": "#/definitions/check_results_type"},
+        "associate_entries_from_same_site": {"$ref": "#/definitions/check_results_type"}
+      }
+      ,
+      "required": ["summary_exists", "no_stray_files", "correct_num_of_images",
+                    "image_ext_correct", "all_dirs_not_empty",
+                    "file_names_correct", "file_names_incorrect", "val_dir_exists",
+                    "correct_number_of_reports", "map_only_val_reps_exist", 
+                    "map_statistics_correct", "fscs_content_correct", "associate_entries_from_same_site"]
+    }
+  }
+}
