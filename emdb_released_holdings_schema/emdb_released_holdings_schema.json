@@ -7,6 +7,7 @@
     "definitions": {
         "holdings": {
             "properties": {
+                "last_update": { "type": "string", "format": "date"},
                 "header": {"$ref": "#/definitions/files"},
                 "map": {"$ref": "#/definitions/files"},
                 "half_maps": {"$ref": "#/definitions/files"},
