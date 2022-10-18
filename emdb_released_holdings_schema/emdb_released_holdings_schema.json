@@ -1,0 +1,33 @@
+{
+    "$comment": "At the time draft 7 of JSON schema was the latest version and the explict reference to this version is chosen",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://github.com/emdb-empiar/emdb-json-schemas/emdb_released_holdings_schema.json",
+    "title": "JSON Schema for the weekly provision of a list of files in every entry from the EMDB archive",
+    "description": "This schema contains the list of files for every EMDB entry",
+    "definitions": {
+        "holdings": {
+            "properties": {
+                "header": {"$ref": "#/definitions/files"},
+                "map": {"$ref": "#/definitions/files"},
+                "half_maps": {"$ref": "#/definitions/files"},
+                "additional_maps": {"$ref": "#/definitions/files"},
+                "masks": {"$ref": "#/definitions/files"},
+                "figure": {"$ref": "#/definitions/files"},
+                "structure_factors": {"$ref": "#/definitions/files"},
+                "layer_lines": {"$ref": "#/definitions/files"},
+                "validation_reports": {"$ref": "#/definitions/files"}
+            },
+            "required": [
+                "header"
+            ]
+        },
+        "files": {
+            "type": "array", "items": {"type": "string"}
+        }
+    },
+    "type": "object",
+    "patternProperties": {
+        "^EMD-[0-9]{4,5}$": {"$ref": "#/definitions/holdings"}
+    },
+    "additionalProperties": false
+}
