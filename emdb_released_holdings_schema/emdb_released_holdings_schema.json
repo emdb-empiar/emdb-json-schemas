@@ -19,6 +19,7 @@
                 "validation_reports": {"$ref": "#/definitions/files"}
             },
             "required": [
+                "last_update",
                 "header"
             ]
         },
