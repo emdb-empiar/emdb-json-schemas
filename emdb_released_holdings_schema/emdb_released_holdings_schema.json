@@ -7,27 +7,58 @@
     "definitions": {
         "holdings": {
             "properties": {
-                "last_update": { "type": "string", "format": "date"},
-                "header": {"$ref": "#/definitions/files"},
-                "map": {"$ref": "#/definitions/files"},
-                "half_maps": {"$ref": "#/definitions/files"},
+                "entry_last_update": {"type": "string", "format": "date"},
+                "headers": {"allOf": [{"$ref": "#/definitions/files"},{"minItems": 1,"maxItems": 2}]},
+                "map": {"allOf": [{"$ref": "#/definitions/files"},{"minItems": 1,"maxItems": 1}]},
+                "half_maps": {"anyOf": [
+                    {"allOf": [{"$ref": "#/definitions/files"},{"maxItems": 0}]},
+                    {"allOf": [{"$ref": "#/definitions/files"},{"maxItems": 2}]}
+                ]},
                 "additional_maps": {"$ref": "#/definitions/files"},
                 "masks": {"$ref": "#/definitions/files"},
-                "figure": {"$ref": "#/definitions/files"},
+                "figure": {"allOf": [{"$ref": "#/definitions/files"},{"minItems": 1,"maxItems": 1}]},
                 "structure_factors": {"$ref": "#/definitions/files"},
                 "layer_lines": {"$ref": "#/definitions/files"},
+                "validation_reports_last_update": {
+                    "anyOf": [
+                    {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    {
+                        "type": "string",
+                        "maxLength": 0
+                    }
+                ]},
                 "validation_reports": {"$ref": "#/definitions/files"}
             },
             "required": [
-                "last_update",
-                "header"
+                "entry_last_update",
+                "headers",
+                "map",
+                "half_maps",
+                "additional_maps",
+                "masks",
+                "figure",
+                "structure_factors",
+                "layer_lines",
+                "validation_reports_last_update",
+                "validation_reports"
             ]
         },
         "files": {
-            "type": "array", "items": {"type": "string"}
+            "type": "array",
+            "items": {"type": "object"},
+            "properties": {
+                "last_update": {"type": "string", "format": "date"},
+                "file_name": {"type": "string"},
+                "md5_checksum": {"type": "string"}
+            },
+            "required": ["last_update", "file_name", "md5_checksum"]
         }
     },
     "type": "object",
+    "minProperties": 1,
     "patternProperties": {
         "^EMD-[0-9]{4,5}$": {"$ref": "#/definitions/holdings"}
     },
