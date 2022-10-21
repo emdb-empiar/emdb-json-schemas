@@ -16,34 +16,16 @@
                 ]},
                 "additional_maps": {"$ref": "#/definitions/files"},
                 "masks": {"$ref": "#/definitions/files"},
-                "figure": {"allOf": [{"$ref": "#/definitions/files"},{"minItems": 1,"maxItems": 1}]},
+                "fscs": {"$ref": "#/definitions/files"},
+                "figure": {"$ref": "#/definitions/files"},
                 "structure_factors": {"$ref": "#/definitions/files"},
                 "layer_lines": {"$ref": "#/definitions/files"},
-                "validation_reports_last_update": {
-                    "anyOf": [
-                    {
-                        "type": "string",
-                        "format": "date"
-                    },
-                    {
-                        "type": "string",
-                        "maxLength": 0
-                    }
-                ]},
+                "validation_reports_last_update": {"type": "string", "format": "date"},
                 "validation_reports": {"$ref": "#/definitions/files"}
             },
             "required": [
                 "entry_last_update",
-                "headers",
-                "map",
-                "half_maps",
-                "additional_maps",
-                "masks",
-                "figure",
-                "structure_factors",
-                "layer_lines",
-                "validation_reports_last_update",
-                "validation_reports"
+                "headers"
             ]
         },
         "files": {
