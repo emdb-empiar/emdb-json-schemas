@@ -10,7 +10,7 @@
     "entry_info": {
       "type": "object",
       "properties": {
-        "site": { "enum": ["PDBe", "RCSB", "PDBj"]},
+        "site": { "enum": ["PDBe", "RCSB", "PDBj", "PDBc"]},
         "status": {"enum": ["AUCO", "AUTH", "AUXS", "AUXU", "HOLD", "HOLD8W", "HPUB", "OBS", "POLC", "PROC", "REFI", "REL", "REPL", "REUP", "WAIT", "WDRN"]},
         "Dep_ID": {"type": "string", "pattern": "^D_[0-9]+$"},
         "last_update_date": { "type": "string", "format": "date"},
@@ -45,7 +45,7 @@
           "to_copy": {"type": "boolean"},
           "copied_to": {"type": "string"}
       },
-      "requred": ["file_path", "file_name", "to_copy", "copied_to"]
+      "required": ["file_path", "file_name", "to_copy", "copied_to"]
     },
     "checks_type": {
       "type": "object",
