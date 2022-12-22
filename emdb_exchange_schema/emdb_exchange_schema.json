@@ -49,7 +49,7 @@
         "blockers": {"$ref": "#/definitions/blockers_type"},
         "warnings": {"$ref": "#/definitions/warnings_type"}
       },
-      "required": ["blockers", "warnings"]
+      "required": ["blockers"]
     },
     "check_results_type": {
       "type": "array",
