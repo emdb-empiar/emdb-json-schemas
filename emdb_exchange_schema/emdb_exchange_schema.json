@@ -30,11 +30,7 @@
         "missing_reports": {"$ref": "#/definitions/files_type"},
         "checks": {"$ref": "#/definitions/checks_type"}
       },
-      "required": ["site", "status", "Dep_ID", "last_update_date", "map_release_date",
-                    "header_release_date", "obsoleted_date", "withdrawn_date",
-                    "update", "header", "map", "masks", "fscs", "images", 
-                    "half_maps", "additional_maps", "current_reports",
-                    "missing_reports", "checks"]
+      "required": ["site", "missing_reports", "checks"]
     },
     "files_type": {
       "type": "array",
