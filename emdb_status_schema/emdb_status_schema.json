@@ -35,7 +35,8 @@
                 "superseded_by": {
                     "type": "string", 
                     "pattern": "^EMD-[0-9]{4,5}$"
-                }
+                },
+                "country": {"type": "string"}
             },
             "required": [
                 "status",
