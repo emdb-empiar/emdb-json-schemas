@@ -1,0 +1,46 @@
+{
+    "$comment": "At the time draft 7 of JSON schema was the latest version and the explict reference to this version is chosen",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://github.com/emdb-empiar/emdb-json-schemas/emdb_update_info_schema.json",
+    "title": "JSON Schema for holding information about the size of weekly update of the EMDB archive",
+    "description": "This schema contains the number of directories, files and size of the next week's released, updated and obsoleted entries",
+    "definitions": {
+        "updateData": {
+            "properties": {
+                "Directories": {"type": "number"},
+                "Files": {"type": "number"},
+                "Size": {"type": "number"}
+            },
+            "required": [
+                "Directories",
+                "Files",
+                "Size MB"
+            ]
+        }
+    },
+    "type": "object",
+    "properties": {
+        "UpdateDate": {
+            "type": "string",
+            "format": "date"
+        },
+        "ReleaseDate": {
+            "type": "string",
+            "format": "date"
+        },
+
+        "All": {"$ref": "#/definitions/updateData"},
+        "Releases": {"$ref": "#/definitions/updateData"},
+        "Updates": {"$ref": "#/definitions/updateData"},
+        "Obsoleted": {"$ref": "#/definitions/updateData"},
+        "Reports": {"$ref": "#/definitions/updateData"}
+    },
+   "additionalProperties": false,
+   "required": ["UpdateDate",
+                "ReleaseDate",
+                "All",
+                "Releases",
+                "Updates",
+                "Obsoleted",
+                "Reports"]
+}
