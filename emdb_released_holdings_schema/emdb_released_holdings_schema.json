@@ -7,6 +7,7 @@
     "definitions": {
         "holdings": {
             "properties": {
+                "emdb_id": {"type": "string", "pattern": "^EMD-[0-9]{4,5}$"},
                 "entry_last_update": {"type": "string", "format": "date"},
                 "headers": {"allOf": [{"$ref": "#/definitions/files"},{"minItems": 1,"maxItems": 2}]},
                 "map": {"allOf": [{"$ref": "#/definitions/files"},{"minItems": 1,"maxItems": 1}]},
@@ -21,9 +22,11 @@
                 "structure_factors": {"$ref": "#/definitions/files"},
                 "layer_lines": {"$ref": "#/definitions/files"},
                 "validation_reports_last_update": {"type": "string", "format": "date"},
-                "validation_reports": {"$ref": "#/definitions/files"}
+                "validation_reports": {"$ref": "#/definitions/files"},
+                "unknown": {"$ref": "#/definitions/files"}
             },
             "required": [
+                "emdb_id",
                 "entry_last_update",
                 "headers"
             ]
@@ -40,9 +43,12 @@
         }
     },
     "type": "object",
-    "minProperties": 1,
-    "patternProperties": {
-        "^EMD-[0-9]{4,5}$": {"$ref": "#/definitions/holdings"}
+    "properties": {
+        "entries": {
+            "type": "array",
+            "items": {"$ref": "#/definitions/holdings"}
+        }
     },
+    "required": ["entries"],
     "additionalProperties": false
 }
