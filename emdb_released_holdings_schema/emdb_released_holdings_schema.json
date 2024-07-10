@@ -8,7 +8,7 @@
         "holdings": {
             "properties": {
                 "entry_last_update": {"type": "string", "format": "date"},
-                "headers": {"allOf": [{"$ref": "#/definitions/files"},{"minItems": 1,"maxItems": 2}]},
+                "headers": {"allOf": [{"$ref": "#/definitions/files"},{"minItems": 1,"maxItems": 3}]},
                 "map": {"allOf": [{"$ref": "#/definitions/files"},{"minItems": 1,"maxItems": 1}]},
                 "half_maps": {"anyOf": [
                     {"allOf": [{"$ref": "#/definitions/files"},{"maxItems": 0}]},
