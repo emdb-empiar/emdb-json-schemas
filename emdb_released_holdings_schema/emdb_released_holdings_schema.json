@@ -25,7 +25,6 @@
                 "unknown": {"$ref": "#/definitions/files"}
             },
             "required": [
-                "emdb_id",
                 "entry_last_update",
                 "headers"
             ]
