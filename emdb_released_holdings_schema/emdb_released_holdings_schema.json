@@ -43,7 +43,7 @@
     "type": "object",
     "minProperties": 1,
     "patternProperties": {
-        "^EMD-[0-9]{4,5}$": {"$ref": "#/definitions/holdings"}
+        "^EMD-[0-9]{4,6}$": {"$ref": "#/definitions/holdings"}
     },
     "additionalProperties": false
 }

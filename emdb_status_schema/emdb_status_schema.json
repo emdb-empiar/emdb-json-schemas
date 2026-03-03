@@ -34,7 +34,7 @@
                 "withdrawn_date": { "type": "string", "format": "date" },
                 "superseded_by": {
                     "type": "string", 
-                    "pattern": "^EMD-[0-9]{4,5}$"
+                    "pattern": "^EMD-[0-9]{4,6}$"
                 },
                 "country": {"type": "string"}
             },
