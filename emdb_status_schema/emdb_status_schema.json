@@ -48,7 +48,7 @@
     },
     "type": "object",
     "patternProperties": {
-        "^EMD-[0-9]{4,5}$": { "$ref": "#/definitions/statusData" }
+        "^EMD-[0-9]{4,6}$": { "$ref": "#/definitions/statusData" }
     },
    "additionalProperties": false
 }
